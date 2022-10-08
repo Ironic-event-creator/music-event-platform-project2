@@ -3,12 +3,12 @@
 ## Files structurs:
 
     [ ] set PORT
-    [ ] configurations understanding: db, config, bin
+    [ ] configurations understanding: db, config, bin (together)
     [ ] create seeds file
 
-    [ ] Models: 
-        - [ ] Event model         
-        - [ ] User model
+    [x] Models: 
+        - [x] Event model         
+        - [x] User model
 
     [ ] Routes:
        - event.routes.js
