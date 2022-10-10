@@ -25,8 +25,7 @@ const events = [
       locationName: "Zorlu PSM - Touche",
       address: "Levazim, Koru Sokagi No:2, 34340 Besiktas/Istanbul, Turkey",
     },
-    created: 2022 - 10 - 19, //year-month-day
-    time: "21:00",
+    startTime: new Date("October 19, 2022 21:00:00"),
   },
   {
     title: "Snarky Puppy",
@@ -36,8 +35,7 @@ const events = [
       locationName: "Zorlu PSM - Turkcell Stage",
       address: "Levazim, Koru Sokagi No:2, 34340 Besiktas/Istanbul, Turkey",
     },
-    created: 2022 - 11 - 05, //year-month-day
-    time: "21:00",
+    startTime: new Date("November 05, 2022 21:00:00"),
   },
   {
     title: "Parov Stelar",
@@ -48,8 +46,7 @@ const events = [
       address:
         "Caferaga, Turyol Kadikoy Eminonu Karakoy Hatti, 34710, Kadikoy/Istanbul, Turkey",
     },
-    created: 2023 - 06 - 03, //year-month-day
-    time: "21:00",
+    startTime: new Date("November 03, 2022 21:00:00"),
   },
   {
     title: "New York Standards Trio",
@@ -60,8 +57,7 @@ const events = [
       address:
         "Bereketzade Mahallesi, Galata Kulesi Sokak, No:8, 34421 Beyoglu/Istanbul, Turkey",
     },
-    created: 2022 - 10 - 25, //year-month-day
-    time: "21:00",
+    startTime: new Date("October 25, 2022 21:00:00"),
   },
   {
     title: "Palaye Royale",
@@ -71,8 +67,7 @@ const events = [
       locationName: "Zorlu PSM - %100 Studio",
       address: "Levazim, Koru Sokagi, No:2, 34340 Besiktas/Istanbul, Turkey",
     },
-    created: 2023 - 03 - 10, //year-month-day
-    time: "21:00",
+    startTime: new Date("November 17, 2022 21:00:00"),
   },
 ];
 

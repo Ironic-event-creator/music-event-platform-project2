@@ -14,11 +14,8 @@
        [x] event.routes.js
        [x] connections required (model file, mongoose...)
        [x] 2nd page: router.get("/events") -> display events
-        Event.find(), layout.hbs link
        [x] 3rd page: router.get("/events/:eventId") -> display event details
-        Event.findById() (add a link on every events)
-       [x] 3rd page: router.post("events/:eventId/delete") -> delete event and redirect to the events list
-        Event.findByIdAndDelete(req.params.eventId)
+       [x] 3rd page: router.post("events/:eventId/delete") -> delete event and redirect
        - 4th page: router.get("/events/create") -> display form
        - 4th page: router.post("/events/create") -> process form
        - 5th page: router.get("/events/:eventId/edit") -> display form
@@ -62,3 +59,21 @@
     - Multiple lives
     x Allow moving the player up and down
     - Random sizes for obstacles -->
+
+<!-- Suggestions:
+x startTime - type; Date
+  x only one field (inc. date + time of the day)
+  - UI: type="datetime-local
+  - UI: to display the date, use native js functions
+x rename comments (plural)
+MVP simplifications:
+- calendar view > just displaying all events one after the other
+x location > just storing a string
+- comments > bonus
+Bonus:
+- only owner can U+D
+- responsive
+- store location as geo-json & display maps -->
+
+<!-- Todo List:
+Fix the time in event detail page -->

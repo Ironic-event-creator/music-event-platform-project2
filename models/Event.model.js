@@ -20,15 +20,11 @@ const eventSchema = new Schema({
       default: "Istanbul",
     },
   },
-  created: {
+  startTime: {
     type: Date,
     required: true,
   },
-  time: {
-    type: String,
-    required: true,
-  },
-  comment: {
+  comments: {
     type: [String],
   },
   userId: [],
