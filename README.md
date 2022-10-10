@@ -2,23 +2,23 @@
 
 ## Files structurs:
 
-    [ ] set PORT
-    [ ] configurations understanding: db, config, bin (together)
-    [ ] create seeds file
+    [x] set PORT
+    [x] configurations understanding: db, config, bin (together)
+    [x] create seeds file
 
-    [x] Models: 
-        - [x] Event model         
+    [x] Models:
+        - [x] Event model
         - [x] User model
 
     [ ] Routes:
        - event.routes.js
        - connections required (model file, mongoose...)
-       - 2nd page: router.get("/events") -> display events 
+       - 2nd page: router.get("/events") -> display events
         Event.find(), layout.hbs link
-       - 3rd page: router.get("/events/:eventId") -> display event details 
+       - 3rd page: router.get("/events/:eventId") -> display event details
         Event.findById() (add a link on every events)
        - 3rd page: router.post("events/:eventId/delete") -> delete event and redirect to the events list
-        Event.findByIdAndDelete(req.params.eventId) 
+        Event.findByIdAndDelete(req.params.eventId)
        - 4th page: router.get("/events/create") -> display form
        - 4th page: router.post("/events/create") -> process form
        - 5th page: router.get("/events/:eventId/edit") -> display form
@@ -26,7 +26,7 @@
 
 
     [ ] Views:
-       - Events views folder   
+       - Events views folder
         1-Home: All event list page
         2-Categories: Events depending on category page
         3-Event details: Details page
