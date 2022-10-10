@@ -1,5 +1,25 @@
-<h2>Date</h2>
-{{#each events}}
+<header class="row text-center mt-5 mb-5">
+    <div class="col">
+        <h1>Welcome to Event List</h1>
+    </div>
+</header>
+{{!-- {{#each events}}
 <p>{{title}}</p>
 <a href="events/{{_id}}">See Details</a>
-{{/each}}
+{{/each}} --}}
+
+<div id="event-list" class="row">
+    {{#each events}}
+    <section class="event col-12 col-md-4 mb-2">
+        <div class="card">
+            {{!-- <img src="./images/jacket-blue.jpg" class="card-img-top" alt="jacket" /> --}}
+            <div class="card-body text-center">
+                <h4 class="card-title">{{title}}</h4>
+                <p class="card-text">{{style}}</p>
+                <p class="card-text">{{location.locationName}}</p>
+                <a class="btn btn-secondary btn-sm" href="events/{{_id}}">See Details</a>
+            </div>
+        </div>
+    </section>
+    {{/each}}
+</div>

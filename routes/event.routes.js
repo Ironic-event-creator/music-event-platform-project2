@@ -13,18 +13,6 @@ router.get("/events", (req, res, next) => {
     });
 });
 
-//3rd Page - Display details of an event
-router.get("/events/:eventId", (req, res, next) => {
-  Event.findById(req.params.eventId)
-    .then((eventDetails) => {
-      res.render("events/event-details", eventDetails);
-    })
-    .catch((err) => {
-      console.log("error getting event details from DB", err);
-      next();
-    });
-});
-
 //4th Page - Display form to create
 router.get("/events-create", (req, res, next) => {
   res.render("events/create-event");
@@ -36,9 +24,10 @@ router.post("/events-create", (req, res, next) => {
     title: req.body.title,
     style: req.body.style,
     description: req.body.description,
-    location: 
-    {locationName: req.body.locationName,
-    address: req.body.address,},
+    location: {
+      locationName: req.body.locationName,
+      address: req.body.address,
+    },
     startTime: req.body.startTime,
   };
 
@@ -52,17 +41,29 @@ router.post("/events-create", (req, res, next) => {
     });
 });
 
- //5th Page - Display form to edit
- router.get("/events/:eventId/edit", (req, res, next) => {
-   Event.findById(req.params.eventId)
-     .then((eventDetails) => {
-       res.render("events/edit-event", eventDetails);
-     })
-     .catch((err) => {
-       console.log("Error updating event ", err);
-       next();
-     });
- });
+//5th Page - Display form to edit
+router.get("/events/:eventId/edit", (req, res, next) => {
+  Event.findById(req.params.eventId)
+    .then((eventDetails) => {
+      res.render("events/edit-event", eventDetails);
+    })
+    .catch((err) => {
+      console.log("Error updating event ", err);
+      next();
+    });
+});
+
+//3rd Page - Display details of an event
+router.get("/events/:eventId", (req, res, next) => {
+  Event.findById(req.params.eventId)
+    .then((eventDetails) => {
+      res.render("events/event-details", eventDetails);
+    })
+    .catch((err) => {
+      console.log("error getting event details from DB", err);
+      next();
+    });
+});
 
 //5th Page - Process form to edit
 router.post("/events/:eventId/edit", (req, res, next) => {
@@ -72,10 +73,10 @@ router.post("/events/:eventId/edit", (req, res, next) => {
     title: req.body.title,
     style: req.body.style,
     description: req.body.description,
-    location:{
-       locationName: req.body.locationName,
-       address: req.body.address,
-    } , 
+    location: {
+      locationName: req.body.locationName,
+      address: req.body.address,
+    },
     startTime: req.body.startTime,
   };
 

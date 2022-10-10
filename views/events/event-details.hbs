@@ -1,4 +1,4 @@
-<h2>{{title}}</h2>
+{{!-- <h2>{{title}}</h2>
 
 <p>Music style: {{style}}</p>
 <div>
@@ -22,5 +22,31 @@
 </form>
 <form action="/events/{{_id}}/edit" method="get">
   <button>Update</button>
+</form> --}}
 
-</form>
+<header class="row text-center mt-5 mb-5 border">
+  <div class="col">
+    <h1> {{title}} </h1>
+    <h4>Music style: {{style}}</h4>
+    <h6>{{startTime}}</h6>
+    <p class=>{{description}}</p>
+    <div>
+      <h5>{{location.locationName}}</h5>
+      <p>{{location.address}}</p>
+      <p>{{location.city}}</p>
+    </div>
+    <div>
+      {{#each comments}}
+      <p></p>
+      {{/each}}
+    </div>
+    <div>
+    <form action="/events/{{_id}}/delete" method="POST">
+      <button class="btn btn-secondary" >Delete</button>
+    </form>
+    <form action="/events/{{_id}}/edit" method="get">
+      <button class="btn btn-primary" >Update</button>
+    </form>
+    </div>
+  </div>
+</header>
