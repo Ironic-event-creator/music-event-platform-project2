@@ -1,20 +1,26 @@
 <h2>{{title}}</h2>
+
+<p>Music style: {{style}}</p>
 <div>
-    <h5>{{startTime}}</h5>
+  <h5>{{startTime}}</h5>
 </div>
 <div>
-    <h5>{{location.locationName}}</h5>
-    <p>{{location.address}}</p>
-    <p>{{location.city}}</p>
+  <h5>{{location.locationName}}</h5>
+  <p>{{location.address}}</p>
+  <p>{{location.city}}</p>
 </div>
 <div>
-    <p>{{description}}</p>
+  <p>{{description}}</p>
 </div>
 <div>
-    {{#each comments}}
+  {{#each comments}}
     <p></p>
-    {{/each}}
+  {{/each}}
 </div>
 <form action="/events/{{_id}}/delete" method="POST">
-        <button>Delete</button>
+  <button>Delete</button>
+</form>
+<form action="/events/{{_id}}/edit" method="get">
+  <button>Update</button>
+
 </form>

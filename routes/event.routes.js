@@ -14,8 +14,8 @@ router.get("/events", (req, res, next) => {
 });
 
 //3rd Page - Display details of an event
-router.get("/events/:id", (req, res, next) => {
-  Event.findById(req.params.id)
+router.get("/events/:eventId", (req, res, next) => {
+  Event.findById(req.params.eventId)
     .then((eventDetails) => {
       res.render("events/event-details", eventDetails);
     })
@@ -28,7 +28,6 @@ router.get("/events/:id", (req, res, next) => {
 //4th Page - Display form to create
 router.get("/events-create", (req, res, next) => {
   res.render("events/create-event");
-  next();
 });
 
 //4th Page - Process form to create
@@ -37,57 +36,58 @@ router.post("/events-create", (req, res, next) => {
     title: req.body.title,
     style: req.body.style,
     description: req.body.description,
-    locationName: req.body.location.locationName,
-    address: req.body.location.address,
+    location: 
+    {locationName: req.body.locationName,
+    address: req.body.address,},
     startTime: req.body.startTime,
   };
 
   Event.create(eventDetails)
     .then(() => {
-      res.redirect("/");
+      res.redirect("/events");
     })
     .catch((err) => {
       console.log("error creating new event in DB", err);
-      next(err);
+      next();
     });
 });
 
-// //5th Page - Display form to edit
-// router.get("/events/:eventId/edit", (req, res, next) => {
-//   Event.findById(req.params.eventId)
-//     .then((eventDetails) => {
-//       res.render("events/edit-event", eventDetails);
-//     })
-//     .catch((err) => {
-//       console.log("Error updating event ", err);
-//       next();
-//     });
-// });
+ //5th Page - Display form to edit
+ router.get("/events/:eventId/edit", (req, res, next) => {
+   Event.findById(req.params.eventId)
+     .then((eventDetails) => {
+       res.render("events/edit-event", eventDetails);
+     })
+     .catch((err) => {
+       console.log("Error updating event ", err);
+       next();
+     });
+ });
 
-// //5th Page - Process form to edit
-// router.post("/events/:eventId/edit", (req, res, next) => {
-//   const eventId = req.params.eventId;
+//5th Page - Process form to edit
+router.post("/events/:eventId/edit", (req, res, next) => {
+  const eventId = req.params.eventId;
 
-//   const newDetails = {
-//     title: req.body.title,
-//     style: req.body.style,
-//     description: req.body.description,
-//     locationName: req.body.location.locationName,
-//     address: req.body.location.address,
-//     city: req.body.location.city,
-//     startTime: req.body.startTime,
-//     comments: req.body.comments,
-//   };
+  const newDetails = {
+    title: req.body.title,
+    style: req.body.style,
+    description: req.body.description,
+    location:{
+       locationName: req.body.locationName,
+       address: req.body.address,
+    } , 
+    startTime: req.body.startTime,
+  };
 
-//   Event.findByIdAndUpdate(eventId, newDetails)
-//     .then(() => {
-//       res.redirect(`/events/${eventId}`);
-//     })
-//     .catch((err) => {
-//       console.log("Error updating event", err);
-//       next();
-//     });
-// });
+  Event.findByIdAndUpdate(eventId, newDetails)
+    .then(() => {
+      res.redirect(`/events/${eventId}`);
+    })
+    .catch((err) => {
+      console.log("Error updating event", err);
+      next();
+    });
+});
 
 //3rd Page - Delete event
 router.post("/events/:id/delete", (req, res, next) => {

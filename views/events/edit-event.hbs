@@ -1,0 +1,44 @@
+<h3>Update an event</h3>
+
+<form action="/events/{{_id}}/edit" method="post">
+    <input type="text" class="form-control" name="title" value={{title}} required>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="style" value="Rock">
+        <label class="form-check-label">
+            Rock
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="style" value="Jazz">
+        <label class="form-check-label">
+            Jazz
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="style" value="Pop">
+        <label class="form-check-label">
+            Pop
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="style" value="Blues">
+        <label class="form-check-label">
+            Blues
+        </label>
+    </div>
+    <label>Description:
+        <input type="text" class="form-control" value={{description}} name="description" >
+    </label>
+    <label>Location:
+        <input type="text" class="form-control" value={{location.locationName}} name="locationName" required>
+    </label>
+    <label>Address:
+        <input type="text" class="form-control" value={{location.address}} name="address" required>
+    </label>
+    <label>Date and Time of the Event:
+        <input type="datetime-local" name="startTime" value={{startTime}} required>
+    </label>
+    <button class="btn btn-danger" type="submit">Update</button>
+
+</form>
