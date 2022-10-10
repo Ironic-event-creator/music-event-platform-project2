@@ -24,11 +24,10 @@ const projectName = "music-event-platform-project2";
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
 // 👇 Start handling routes here
-const index = require("./routes/index.routes");
-app.use("/", index);
+app.use("/", require("./routes/index.routes"));
+app.use("/", require("./routes/event.routes"))
 
-const authRoutes = require("./routes/auth.routes");
-app.use("/auth", authRoutes);
+app.use("/auth", require("./routes/auth.routes"));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
