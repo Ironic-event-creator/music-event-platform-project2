@@ -1,0 +1,21 @@
+<h2>{{title}}</h2>
+<div>
+    <h5>{{created}}</h5>
+    <p>{{time}}</p>
+</div>
+<div>
+    <h5>{{location.locationName}}</h5>
+    <p>{{location.address}}</p>
+    <p>{{location.city}}</p>
+</div>
+<div>
+    <p>{{description}}</p>
+</div>
+<div>
+    {{#each comment}}
+    <p></p>
+    {{/each}}
+</div>
+<form action="/events/{{_id}}/delete" method="POST">
+        <button>Delete</button>
+</form>

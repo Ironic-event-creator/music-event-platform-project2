@@ -11,13 +11,13 @@
         - [x] User model
 
     [ ] Routes:
-       - event.routes.js
-       - connections required (model file, mongoose...)
-       - 2nd page: router.get("/events") -> display events
+       [x] event.routes.js
+       [x] connections required (model file, mongoose...)
+       [x] 2nd page: router.get("/events") -> display events
         Event.find(), layout.hbs link
-       - 3rd page: router.get("/events/:eventId") -> display event details
+       [x] 3rd page: router.get("/events/:eventId") -> display event details
         Event.findById() (add a link on every events)
-       - 3rd page: router.post("events/:eventId/delete") -> delete event and redirect to the events list
+       [x] 3rd page: router.post("events/:eventId/delete") -> delete event and redirect to the events list
         Event.findByIdAndDelete(req.params.eventId)
        - 4th page: router.get("/events/create") -> display form
        - 4th page: router.post("/events/create") -> process form
