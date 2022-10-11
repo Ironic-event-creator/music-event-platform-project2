@@ -1,5 +1,8 @@
 const Event = require("../models/Event.model");
+const User = require("../models/User.model")
 const router = require("express").Router();
+const isLoggedIn = require("../middleware/isLoggedIn")
+const isLoggedOut = require("../middleware/isLoggedOut")
 
 //2nd Page - Display all events
 router.get("/events", (req, res, next) => {
@@ -14,12 +17,12 @@ router.get("/events", (req, res, next) => {
 });
 
 //4th Page - Display form to create
-router.get("/events-create", (req, res, next) => {
+router.get("/events-create", isLoggedIn, (req, res, next) => {
   res.render("events/create-event");
 });
 
 //4th Page - Process form to create
-router.post("/events-create", (req, res, next) => {
+router.post("/events-create", isLoggedIn, (req, res, next) => {
   const eventDetails = {
     title: req.body.title,
     style: req.body.style,
@@ -29,7 +32,9 @@ router.post("/events-create", (req, res, next) => {
       address: req.body.address,
     },
     startTime: req.body.startTime,
+   userId: req.session.user._id,
   };
+  console.log(req.session.user._id)
 
   Event.create(eventDetails)
     .then(() => {
@@ -42,10 +47,14 @@ router.post("/events-create", (req, res, next) => {
 });
 
 //5th Page - Display form to edit
-router.get("/events/:eventId/edit", (req, res, next) => {
+router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
-      res.render("events/edit-event", eventDetails);
+     if(eventDetails.userId == req.session.user._id){
+        res.render("events/edit-event", eventDetails);
+      } else {
+        return res.redirect(`/events/${eventDetails._id}`)// {errorMessage: "You are not the owner of this event!"});
+      }    
     })
     .catch((err) => {
       console.log("Error updating event ", err);
@@ -66,7 +75,7 @@ router.get("/events/:eventId", (req, res, next) => {
 });
 
 //5th Page - Process form to edit
-router.post("/events/:eventId/edit", (req, res, next) => {
+router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
 
   const newDetails = {
@@ -78,6 +87,7 @@ router.post("/events/:eventId/edit", (req, res, next) => {
       address: req.body.address,
     },
     startTime: req.body.startTime,
+
   };
 
   Event.findByIdAndUpdate(eventId, newDetails)
@@ -91,7 +101,7 @@ router.post("/events/:eventId/edit", (req, res, next) => {
 });
 
 //3rd Page - Delete event
-router.post("/events/:id/delete", (req, res, next) => {
+router.post("/events/:id/delete", isLoggedIn, (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
     .then(() => {
       res.redirect("/events");
