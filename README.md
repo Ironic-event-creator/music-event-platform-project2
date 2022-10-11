@@ -30,27 +30,26 @@
         [x]-Creating event: Creating form page CR
         [x]-Updating event: Updating form page CRUD
 
-        [x] - link pages 
-        [x] - add bootstrap 
+        [x] - link pages
+        [x] - add bootstrap
 
     [x] User:
         [x] - connect route user in app.js
         [x] - SignUp route
-        [x] - SignUp form  
+        [x] - SignUp form
         [x] - LogIn route
-        [x] - LogIn form 
+        [x] - LogIn form
         [x] - Authorization middleware functions C+U+D /don't display button delete or update
         [x] - only owner can U+D
-        [ ] - comments from every user -> isLoggedIn 
+        [x] - comments from every user -> isLoggedIn
         [x] - store user Id in the Event model
-        [ ] - style filter
-          
+        [x] - style filter
+        [ ] - Map
+        [ ] - Date
+
 
 <!-- Todo List:
 Fix the time in event detail page -->
-
-
-
 
 <!-- Suggestions:
 x startTime - type; Date
@@ -66,5 +65,3 @@ Bonus:
 
 - responsive
 - store location as geo-json & display maps -->
-
-

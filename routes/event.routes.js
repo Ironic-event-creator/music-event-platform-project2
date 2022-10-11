@@ -1,8 +1,8 @@
 const Event = require("../models/Event.model");
-const User = require("../models/User.model")
+const User = require("../models/User.model");
 const router = require("express").Router();
-const isLoggedIn = require("../middleware/isLoggedIn")
-const isLoggedOut = require("../middleware/isLoggedOut")
+const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedOut = require("../middleware/isLoggedOut");
 
 //2nd Page - Display all events
 router.get("/events", (req, res, next) => {
@@ -32,9 +32,9 @@ router.post("/events-create", isLoggedIn, (req, res, next) => {
       address: req.body.address,
     },
     startTime: req.body.startTime,
-   userId: req.session.user._id,
+    userId: req.session.user._id,
   };
-  console.log(req.session.user._id)
+  console.log(req.session.user._id);
 
   Event.create(eventDetails)
     .then(() => {
@@ -46,11 +46,28 @@ router.post("/events-create", isLoggedIn, (req, res, next) => {
     });
 });
 
+//Filter events page
+router.get("/:eventStyle", (req, res, next) => {
+  const eventStyle = req.params.eventStyle;
+  Event.find({ style: eventStyle })
+    .then((eventsFromDb) => {
+      if (eventsFromDb === null) {
+        res.send("sorry, no events with that style");
+      } else {
+        res.render("events/events-list", { events: eventsFromDb });
+      }
+    })
+    .catch((err) => {
+      console.log("Error getting events details from DB", err);
+      next();
+    });
+});
+
 //5th Page - Display form to edit
 router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
-        res.render("events/edit-event", eventDetails)
+      res.render("events/edit-event", eventDetails);
     })
     .catch((err) => {
       console.log("Error updating event ", err);
@@ -62,13 +79,12 @@ router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
 router.get("/events/:eventId", (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
-      if(req.session.user  && eventDetails.userId == req.session.user._id){
-       const eventOwner = { message: 'You are the owner of this event'}
-        res.render("events/event-details", {eventDetails, eventOwner})
+      if (req.session.user && eventDetails.userId == req.session.user._id) {
+        const eventOwner = { message: "You are the owner of this event" };
+        res.render("events/event-details", { eventDetails, eventOwner });
       } else {
-        res.render("events/event-details", {eventDetails})
+        res.render("events/event-details", { eventDetails });
       }
-      ;
     })
     .catch((err) => {
       console.log("error getting event details from DB", err);
@@ -80,17 +96,20 @@ router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
   const newComment = req.body.comments;
 
-  Event.findByIdAndUpdate(eventId, { $push: {comments: newComment}}, { returnDocument: 'after' })
-  .then((event) => {
-    console.log(event)
-    res.render("events/event-details", {eventDetails: event})
-  })
-  .catch((err) => {
-    console.log("error saving comment in DB", err)
-    next()
-  })
-
-})
+  Event.findByIdAndUpdate(
+    eventId,
+    { $push: { comments: newComment } },
+    { returnDocument: "after" }
+  )
+    .then((event) => {
+      console.log(event);
+      res.render("events/event-details", { eventDetails: event });
+    })
+    .catch((err) => {
+      console.log("error saving comment in DB", err);
+      next();
+    });
+});
 
 //5th Page - Process form to edit
 router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
@@ -105,7 +124,6 @@ router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
       address: req.body.address,
     },
     startTime: req.body.startTime,
-
   };
 
   Event.findByIdAndUpdate(eventId, newDetails)
