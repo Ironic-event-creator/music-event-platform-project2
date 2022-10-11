@@ -30,13 +30,19 @@
           {{!-- SignUp-Login-LogOut --}}
           <div class="dropdown-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Alessandra
+              
             </button>
+            
+            {{#if userInSession}}
+            <h2>Hello {{userInSession.email}}</h2>
+            {{else}}
+            <a  href="/auth/login">Login</a>
+            {{/if}}
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
             </ul>
           </div>
-          <a class="btn btn-light" href="#" role="button">Register</a>
+          <a class="btn btn-light" href="/auth/signup" role="button">Register</a>
         </div>
       </div>
     </nav>
