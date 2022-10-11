@@ -60,7 +60,6 @@ router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
 
 //3rd Page - Display details of an event
 router.get("/events/:eventId", (req, res, next) => {
-  console.log(req.session)
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
       if(req.session.user  && eventDetails.userId == req.session.user._id){
@@ -76,6 +75,22 @@ router.get("/events/:eventId", (req, res, next) => {
       next();
     });
 });
+// process form to post comments
+router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
+  const eventId = req.params.eventId;
+  const newComment = req.body.comments;
+
+  Event.findByIdAndUpdate(eventId, { $push: {comments: newComment}}, { returnDocument: 'after' })
+  .then((event) => {
+    console.log(event)
+    res.render("events/event-details", {eventDetails: event})
+  })
+  .catch((err) => {
+    console.log("error saving comment in DB", err)
+    next()
+  })
+
+})
 
 //5th Page - Process form to edit
 router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {

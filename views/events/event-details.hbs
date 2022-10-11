@@ -29,28 +29,43 @@
     <h1> {{eventDetails.title}} </h1>
     <h4>Music style: {{eventDetails.style}}</h4>
     <h6>{{eventDetails.startTime}}</h6>
-    <p class=>{{eventDetails.description}}</p>
+    <p class>{{eventDetails.description}}</p>
     <div>
       <h5>{{eventDetails.location.locationName}}</h5>
       <p>{{eventDetails.location.address}}</p>
       <p>{{eventDetails.location.city}}</p>
     </div>
     <div>
-      {{#each eventDetails.comments}}
-      <p></p>
+      <h5>Comments:</h5>
+      {{#each eventDetails.comments}} 
+        <p>{{this}}</p>
       {{/each}}
     </div>
     <div>
-  
-   {{#if eventOwner}}
-      <form action="/events/{{eventDetails._id}}/delete" method="POST">
-      <button class="btn btn-secondary" >Delete</button>
+      <div class="card">
+        <form action="/events/{{eventDetails._id}}/comment" method="post">
+      <h4>Add a comment about this event!</h4>
+        
+        <input
+          class="form-control"
+          type="text"
+          value="Leave your commen here..."
+          name="comments"
+        />
+     
+      <button type="submit" class="btn btn-danger mt-4">Post it</button>
     </form>
-    <form action="/events/{{eventDetails._id}}/edit" method="get">
-      <button class="btn btn-primary" >Update</button>
-      <p>{{eventOwner.message}}</p>
-    </form>
-   {{/if}}
+      </div>
+
+      {{#if eventOwner}}
+        <form action="/events/{{eventDetails._id}}/delete" method="POST">
+          <button class="btn btn-secondary">Delete</button>
+        </form>
+        <form action="/events/{{eventDetails._id}}/edit" method="get">
+          <button class="btn btn-primary">Update</button>
+          <p>{{eventOwner.message}}</p>
+        </form>
+      {{/if}}
     </div>
   </div>
 </header>
