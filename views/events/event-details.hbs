@@ -26,29 +26,30 @@
 
 <header class="row text-center mt-5 mb-5 border">
   <div class="col">
-    <h1> {{title}} </h1>
-    <h4>Music style: {{style}}</h4>
-    <h6>{{startTime}}</h6>
-    <p class=>{{description}}</p>
+    <h1> {{eventDetails.title}} </h1>
+    <h4>Music style: {{eventDetails.style}}</h4>
+    <h6>{{eventDetails.startTime}}</h6>
+    <p class=>{{eventDetails.description}}</p>
     <div>
-      <h5>{{location.locationName}}</h5>
-      <p>{{location.address}}</p>
-      <p>{{location.city}}</p>
+      <h5>{{eventDetails.location.locationName}}</h5>
+      <p>{{eventDetails.location.address}}</p>
+      <p>{{eventDetails.location.city}}</p>
     </div>
     <div>
-      {{#each comments}}
+      {{#each eventDetails.comments}}
       <p></p>
       {{/each}}
     </div>
     <div>
-    <form action="/events/{{_id}}/delete" method="POST">
+  
+   {{#if eventOwner}}
+      <form action="/events/{{eventDetails._id}}/delete" method="POST">
       <button class="btn btn-secondary" >Delete</button>
     </form>
-    <form action="/events/{{_id}}/edit" method="get">
+    <form action="/events/{{eventDetails._id}}/edit" method="get">
       <button class="btn btn-primary" >Update</button>
+      <p>{{eventOwner.message}}</p>
     </form>
-   {{#if errorMessage}}
-    <div class="alert alert-danger">{{errorMessage}}</div>
    {{/if}}
     </div>
   </div>

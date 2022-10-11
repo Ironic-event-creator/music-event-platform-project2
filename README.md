@@ -39,12 +39,15 @@
         [x] - SignUp form  
         [x] - LogIn route
         [x] - LogIn form 
-        [ ] - Authorization middleware functions C+U+D
-        [ ] - comments
-        [ ] - store user Id in the Event model
-        
+        [x] - Authorization middleware functions C+U+D /don't display button delete or update
+        [x] - only owner can U+D
+        [ ] - comments from every user -> isLoggedIn 
+        [x] - store user Id in the Event model
+        [ ] - style filter
           
 
+<!-- Todo List:
+Fix the time in event detail page -->
 
 
 
@@ -52,7 +55,7 @@
 <!-- Suggestions:
 x startTime - type; Date
   x only one field (inc. date + time of the day)
-  - UI: type="datetime-local
+  [x] UI: type="datetime-local
   - UI: to display the date, use native js functions
 x rename comments (plural)
 MVP simplifications:
@@ -60,9 +63,8 @@ MVP simplifications:
 x location > just storing a string
 - comments > bonus
 Bonus:
-- only owner can U+D
+
 - responsive
 - store location as geo-json & display maps -->
 
-<!-- Todo List:
-Fix the time in event detail page -->
+

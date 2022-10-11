@@ -50,11 +50,7 @@ router.post("/events-create", isLoggedIn, (req, res, next) => {
 router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
-     if(eventDetails.userId == req.session.user._id){
-        res.render("events/edit-event", eventDetails);
-      } else {
-        return res.redirect(`/events/${eventDetails._id}`)// {errorMessage: "You are not the owner of this event!"});
-      }    
+        res.render("events/edit-event", eventDetails)
     })
     .catch((err) => {
       console.log("Error updating event ", err);
@@ -64,9 +60,16 @@ router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
 
 //3rd Page - Display details of an event
 router.get("/events/:eventId", (req, res, next) => {
+  console.log(req.session)
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
-      res.render("events/event-details", eventDetails);
+      if(req.session.user  && eventDetails.userId == req.session.user._id){
+       const eventOwner = { message: 'You are the owner of this event'}
+        res.render("events/event-details", {eventDetails, eventOwner})
+      } else {
+        res.render("events/event-details", {eventDetails})
+      }
+      ;
     })
     .catch((err) => {
       console.log("error getting event details from DB", err);
