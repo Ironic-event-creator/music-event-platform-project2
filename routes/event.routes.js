@@ -4,6 +4,9 @@ const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
+// ********* require fileUploader in order to use it *********
+const fileUploader = require('../config/cloudinary.config');
+
 //2nd Page - Display all events
 router.get("/events", (req, res, next) => {
   Event.find()
@@ -22,7 +25,8 @@ router.get("/events-create", isLoggedIn, (req, res, next) => {
 });
 
 //4th Page - Process form to create
-router.post("/events-create", isLoggedIn, (req, res, next) => {
+router.post("/events-create", isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
+  const newImage = req.file.path;
   const eventDetails = {
     title: req.body.title,
     style: req.body.style,
@@ -31,10 +35,10 @@ router.post("/events-create", isLoggedIn, (req, res, next) => {
       locationName: req.body.locationName,
       address: req.body.address,
     },
+    imageUrl: newImage,
     startTime: req.body.startTime,
     userId: req.session.user._id,
   };
-  console.log(req.session.user._id);
 
   Event.create(eventDetails)
     .then(() => {

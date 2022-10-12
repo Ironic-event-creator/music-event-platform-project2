@@ -35,6 +35,9 @@
       <p>{{eventDetails.location.address}}</p>
       <p>{{eventDetails.location.city}}</p>
     </div>
+    <div class="card">
+      <img src="{{eventDetails.imageUrl}}" class="card-img-top" alt="{{eventDetails.title}}">
+    </div>
     <div>
       <h5>Comments:</h5>
       {{#each eventDetails.comments}} 

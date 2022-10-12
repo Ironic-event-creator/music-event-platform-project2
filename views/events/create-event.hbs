@@ -1,8 +1,8 @@
 <div class="row text-center mt-2 mb-2 w-50">
   <h3>Create an event</h3>
 </div>
-<form action="/events-create" method="post" class="row w-50">
-  {{! <input type="text" class="form-control" name="title" required> }}
+<form action="/events-create" method="post" class="row w-50" enctype="multipart/form-data">
+  
 
   <label class="mb-2 mt-2">Title:
     <input type="text" class="form-control mb-2 mt-2" name="title" required />
@@ -56,6 +56,9 @@
   <label class="mb-2 mt-2">Address:
     <input type="text" class="form-control" name="address" required />
   </label>
+  <label class="mb-2 mt-2">Add an image:
+  <input type="file" class="form-control-file" name="imageUrl" />
+</label>
   <label class="mb-2 mt-2">Date and Time of the Event:
     <input type="datetime-local" name="startTime" required />
   </label>

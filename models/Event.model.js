@@ -9,9 +9,7 @@ const eventSchema = new Schema({
     required: true,
     enum: ["Rock", "Jazz", "Pop", "Blues"],
   },
-  description: {
-    type: String,
-  },
+  description: String,
   location: {
     locationName: String,
     address: String,
@@ -27,6 +25,7 @@ const eventSchema = new Schema({
   comments: {
     type: [String],
   },
+  imageUrl: String,
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User"} ,
