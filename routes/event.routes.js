@@ -118,12 +118,10 @@ router.get("/events/:eventId", (req, res, next) => {
     });
 });
 // Process form to post comments
-router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
+router.post("/events/:eventId", (req, res, next) => {
   const eventId = req.params.eventId;
-  const newComment = {
-    comment: req.body.comment,
-    commentOwner: req.body.commentOwner,
-  };
+  const newComment = req.body.commentOwner + " commented: " + req.body.comment 
+
   Event.findByIdAndUpdate(
     eventId,
     { $push: { comments: newComment } },
@@ -138,7 +136,7 @@ router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
     });
 });
 
-//5th Page - Process form to edit
+//Process form to edit
 router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
 
@@ -163,7 +161,7 @@ router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
     });
 });
 
-//3rd Page - Delete event
+//Delete event
 router.post("/events/:id/delete", isLoggedIn, (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
     .then(() => {

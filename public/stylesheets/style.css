@@ -15,8 +15,11 @@ h1 {
   font-size: 46px;
   border-bottom: 5px solid rgba(255, 0, 0, 0.3);
 }
+input {
+  border: 1px solid rgba(255, 0, 0, 0.3)
+}
 .home-page-brand img {
-  width: 40px;
+  width: 44px;
 }
 .home-page-brand {
   border-bottom: 2px solid black;
@@ -33,12 +36,19 @@ h1 {
   transition: ease-in-out 0.3s;
   color: rgba(255, 0, 0, 0.8);
  }
+ .buttons-style a:hover , button:hover{
+  box-shadow: 0 20px 60px 0 rgba(255, 0, 0, 0.8);
+  -webkit-transform: translate(0,-10px);
+  transform: translate(0,-10px);
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+ }
  .light-font {
   color: #f7f2ef
  }
- .list-card {
+ .list-card, .details-card {
    background-color: #e9ecef;
-   border: 1px solid rgba(255, 0, 0, 0.3)
+   border: 2px solid rgba(255, 0, 0, 0.3)
  }
  .list-card:hover {
   box-shadow: 0 20px 60px 0 rgba(255, 0, 0, 0.8);
@@ -46,6 +56,15 @@ h1 {
   transform: translate(0,-10px);
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
+}
+.list-card img {
+  max-height: 136px;
+  width: auto;
+}
+.details-card h4 {
+  padding: 10px;
+  border-radius: 8px;
+  color: rgba(255, 0, 0, 0.8);
 }
 
 .footer img {

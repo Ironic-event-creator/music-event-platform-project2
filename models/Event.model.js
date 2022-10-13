@@ -22,13 +22,7 @@ const eventSchema = new Schema({
     type: Date,
     required: true,
   },
-  comments: [
-    {
-      comment: String,
-      commentOwner: String,
-      commentTime: Date,
-    },
-  ],
+  comments: [String],
   imageUrl: String,
   userId: {
     type: Schema.Types.ObjectId,

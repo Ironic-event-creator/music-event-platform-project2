@@ -1,4 +1,4 @@
-<header class="row text-center mt-5 mb-5 border">
+<header class="row text-center mt-5 mb-5">
   <h1> {{eventDetails.title}} </h1>
   {{#if eventDetails.imageUrl}}
     <div class="">
@@ -19,17 +19,20 @@
   {{/if}}
 </header>
 
+
+
+
 <div class="row text-center">
   <div class="col">
-    <div class="card mb-3">
-      <h3>{{dateFormat eventDetails.startTime "dddd, MMMM Do YYYY, h:mm a"}}</h3>
+    <div class="card mb-3 p-3 details-card">
+      <h4 class="bg-dark">{{dateFormat eventDetails.startTime "dddd, MMMM Do YYYY, h:mm a"}}</h4>
 
       {{#if eventDetails.description}}
-        <p><h5>{{eventDetails.style}}: </h5>{{eventDetails.description}}</p>
+        <p class="border-1"><h5>{{eventDetails.style}}: </h5>{{eventDetails.description}}</p>
       {{/if}}
     </div>
 
-    <div class="card">
+    <div class="card mb-3 p-3 details-card">
       <h5>{{eventDetails.location.locationName}}</h5>
       <p>{{eventDetails.location.address}}</p>
       <h6><em>{{eventDetails.location.city}}</em></h6>
@@ -37,30 +40,30 @@
   </div>
 
   <div class="col">
-    <div class="card">
+    <div class="card mb-3 p-3 details-card">
       <form
-        action="/events/{{eventDetails._id}}/comment"
+        action="/events/{{eventDetails._id}}"
         method="post"
         class="form d-inline mt-2"
       >
         <label>Leave your comments about this event here👇
-          <input class="form-control" type="text" name="comment" placeholder="Your comment" />
+          <input class="form-control mb-2 mt-2" type="text" name="comment" placeholder="Your comment" />
           <input class="form-control" type="text" name="commentOwner" placeholder="Your Name" />
-          <button type="submit" class="btn btn-danger mt-4">Post it</button>
+          <button type="submit" class="btn btn-dark login-btn mt-4 ">Post it</button>
         </label>
       </form>
       <div>
         {{#if eventDetails.comments}}
           <h5>Comments:</h5>
           {{#each eventDetails.comments}}
-          <p>{{this.commentOwner}} commented: {{this.comment}}</p>
+          <p class="border-bottom border-2">{{this}}</p>
           {{/each}}
         {{/if}}
       </div>
     </div>
   </div>
 
-  <div class="row text-center">
+  <div class="row text-center buttons-style">
     {{#if eventOwner}}
       <div class="mt-5">
         <form
@@ -68,15 +71,15 @@
           method="POST"
           class="form d-inline"
         >
-          <button class="btn btn-secondary">Delete</button>
+          <button class="btn btn-dark login-btn me-4">Delete</button>
         </form>
         <form
           action="/events/{{eventDetails._id}}/edit"
           method="get"
           class="form d-inline"
         >
-          <button class="btn btn-primary">Update</button>
-          <p class="mt-3">{{eventOwner.message}}</p>
+          <button class="btn btn-dark login-btn ms-4">Update</button>
+          <p class="mt-3 light-font">{{eventOwner.message}}</p>
         </form>
       </div>
     {{/if}}
