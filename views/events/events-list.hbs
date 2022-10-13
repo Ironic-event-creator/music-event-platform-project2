@@ -12,11 +12,20 @@
     {{#each events}}
     <section class="event col-12 col-md-4 mb-2">
         <div class="card">
-            {{!-- <img src="./images/jacket-blue.jpg" class="card-img-top" alt="jacket" /> --}}
+            {{#if imageUrl}}
+            <img src="{{imageUrl}}" class="card-img-top rounded-pill" alt="{{title}}">
+            {{else}}
+            <img
+        src="../images/defaultImg.jpeg"
+        class="card-img-top rounded-pill"
+        alt="default image band"
+      />
+      {{/if}}
             <div class="card-body text-center">
                 <h4 class="card-title">{{title}}</h4>
                 <p class="card-text">{{style}}</p>
                 <p class="card-text">{{location.locationName}}</p>
+                <p class="card-text">{{dateFormat startTime "dddd, MMMM Do YYYY, h:mm a"}}</p>
                 <a class="btn btn-secondary btn-sm" href="events/{{_id}}">See Details</a>
             </div>
         </div>

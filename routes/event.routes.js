@@ -7,6 +7,11 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 // ********* require fileUploader in order to use it *********
 const fileUploader = require('../config/cloudinary.config');
 
+//format Date
+const hbs = require("hbs");
+
+hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
+
 //2nd Page - Display all events
 router.get("/events", (req, res, next) => {
   Event.find()

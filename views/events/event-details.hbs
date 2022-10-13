@@ -4,8 +4,16 @@
     <div class="">
       <img
         src="{{eventDetails.imageUrl}}"
-        class="card-img-top"
+        class="card-img-top rounded"
         alt="{{eventDetails.title}}"
+      />
+    </div>
+    {{else}}
+       <div class="">
+      <img
+        src="../images/defaultImg.jpeg"
+        class="card-img-top rounded"
+        alt="default image band"
       />
     </div>
   {{/if}}
@@ -14,7 +22,7 @@
 <div class="row text-center">
   <div class="col">
     <div class="card mb-3">
-      <h3>{{eventDetails.startTime}}</h3>
+      <h3>{{dateFormat eventDetails.startTime "dddd, MMMM Do YYYY, h:mm a"}}</h3>
 
       {{#if eventDetails.description}}
         <p><h5>{{eventDetails.style}}: </h5>{{eventDetails.description}}</p>
