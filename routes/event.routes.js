@@ -120,15 +120,23 @@ router.get("/events/:eventId", (req, res, next) => {
 // Process form to post comments
 router.post("/events/:eventId", (req, res, next) => {
   const eventId = req.params.eventId;
-  const newComment = req.body.commentOwner + " commented: " + req.body.comment 
+  const newComment = req.body.commentOwner + " commented: " + req.body.comment;
 
   Event.findByIdAndUpdate(
     eventId,
     { $push: { comments: newComment } },
     { returnDocument: "after" }
   )
-    .then((event) => {
-      res.render("events/event-details", { eventDetails: event });
+    .then((eventDetails) => {
+      if (req.session.user && eventDetails.userId == req.session.user._id) {
+        const eventOwner = { message: "You are the owner of this event" };
+        res.render("events/event-details", {
+          eventDetails: eventDetails,
+          eventOwner,
+        });
+      } else {
+        res.render("events/event-details", { eventDetails: eventDetails });
+      }
     })
     .catch((err) => {
       console.log("error saving comment in DB", err);
