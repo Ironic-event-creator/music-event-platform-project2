@@ -44,7 +44,8 @@
         class="form d-inline mt-2"
       >
         <label>Leave your comments about this event here👇
-          <input class="form-control" type="text" name="comments" />
+          <input class="form-control" type="text" name="comment" placeholder="Your comment" />
+          <input class="form-control" type="text" name="commentOwner" placeholder="Your Name" />
           <button type="submit" class="btn btn-danger mt-4">Post it</button>
         </label>
       </form>
@@ -52,7 +53,7 @@
         {{#if eventDetails.comments}}
           <h5>Comments:</h5>
           {{#each eventDetails.comments}}
-            <p>{{this}}</p>
+          <p>{{this.commentOwner}} commented: {{this.comment}}</p>
           {{/each}}
         {{/if}}
       </div>
