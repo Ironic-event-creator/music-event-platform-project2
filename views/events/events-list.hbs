@@ -1,12 +1,8 @@
 <header class="row text-center mt-5 mb-5">
-    <div class="col">
-        <h1>Welcome to Event List</h1>
+    <div class="col list-header">
+        <h1>All next events</h1>
     </div>
 </header>
-{{!-- {{#each events}}
-<p>{{title}}</p>
-<a href="events/{{_id}}">See Details</a>
-{{/each}} --}}
 
 <div id="event-list" class="row">
     {{#each events}}
@@ -25,7 +21,7 @@
                 <h4 class="card-title">{{title}}</h4>
                 <p class="card-text">{{style}}</p>
                 <p class="card-text">{{location.locationName}}</p>
-                <p class="card-text">{{dateFormat startTime "dddd, MMMM Do YYYY, h:mm a"}}</p>
+                <p class="card-text">{{dateFormat startTime "MMMM Do YYYY, h:mm a"}}</p>
                 <a class="btn btn-secondary btn-sm" href="events/{{_id}}">See Details</a>
             </div>
         </div>

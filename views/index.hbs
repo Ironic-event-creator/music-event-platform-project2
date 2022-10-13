@@ -3,10 +3,46 @@
 
 <header class="row text-center mt-5 mb-5">
   <div class="col">
-    <h1>Welcome to Music Event Platform</h1>
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >  
+      <div class="carousel-inner">
+        <h1>Welcome to Music Event Platform</h1>
     <p>
       In this platform, you can find or even create an Event!
     </p>
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="../images/bluesband.jpeg" class="d-block" alt="blues band" />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="../images/jazzband.jpeg" class="d-block" alt="jazz band" />
+        </div>
+        <div class="carousel-item">
+          <img src="../images/parov-stelar.webp" class="d-block" alt="concert" />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
     <div>
       <a href="/Rock" class="btn btn-primary">Rock</a>
       <a href="/Jazz" class="btn btn-secondary">Jazz</a>
