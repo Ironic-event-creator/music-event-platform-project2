@@ -5,7 +5,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 
 // ********* require fileUploader in order to use it *********
-const fileUploader = require('../config/cloudinary.config');
+const fileUploader = require("../config/cloudinary.config");
 
 //format Date
 const hbs = require("hbs");
@@ -24,36 +24,53 @@ router.get("/events", (req, res, next) => {
     });
 });
 
+//Display all events of user
+router.get("/user-events", (req, res, next) => {
+  Event.find({ userId: req.session.user._id })
+    .then((eventsFromDb) => {
+      res.render("events/events-list", { events: eventsFromDb });
+    })
+    .catch((err) => {
+      console.log("error getting events from DB", err);
+      next();
+    });
+});
+
 //4th Page - Display form to create
 router.get("/events-create", isLoggedIn, (req, res, next) => {
   res.render("events/create-event");
 });
 
 //4th Page - Process form to create
-router.post("/events-create", isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
-  const newImage = req.file.path;
-  const eventDetails = {
-    title: req.body.title,
-    style: req.body.style,
-    description: req.body.description,
-    location: {
-      locationName: req.body.locationName,
-      address: req.body.address,
-    },
-    imageUrl: newImage,
-    startTime: req.body.startTime,
-    userId: req.session.user._id,
-  };
+router.post(
+  "/events-create",
+  isLoggedIn,
+  fileUploader.single("imageUrl"),
+  (req, res, next) => {
+    const newImage = req.file.path;
+    const eventDetails = {
+      title: req.body.title,
+      style: req.body.style,
+      description: req.body.description,
+      location: {
+        locationName: req.body.locationName,
+        address: req.body.address,
+      },
+      imageUrl: newImage,
+      startTime: req.body.startTime,
+      userId: req.session.user._id,
+    };
 
-  Event.create(eventDetails)
-    .then(() => {
-      res.redirect("/events");
-    })
-    .catch((err) => {
-      console.log("error creating new event in DB", err);
-      next();
-    });
-});
+    Event.create(eventDetails)
+      .then(() => {
+        res.redirect("/events");
+      })
+      .catch((err) => {
+        console.log("error creating new event in DB", err);
+        next();
+      });
+  }
+);
 
 //Filter events page
 router.get("/:eventStyle", (req, res, next) => {
