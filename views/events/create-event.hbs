@@ -1,67 +1,95 @@
-<div class="row text-center mt-2 mb-2 w-50">
-  <h3>Create an event</h3>
+<div class="container text-center">
+  <h2 class="mt-4">Post a new event</h2>
+  <p class="light-font"></p>
+<div class="row mt-4 mb-4">
+  <div class="col-12 col-lg-6">
+    <div class="card details-card">
+      <form action="/events-create" method="post" enctype="multipart/form-data">
+
+        <label class="mb-2 mt-2">Title:
+          <input type="text" class="form-control" name="title" required />
+        </label>
+
+        <div class="form-check">
+          <label class="form-check-label m-2">Rock
+            <input
+              class="form-check-input m-2"
+              type="radio"
+              name="style"
+              value="Rock"
+            />
+          </label>
+
+          <label class="form-check-label m-2">Jazz
+            <input
+              class="form-check-input m-2"
+              type="radio"
+              name="style"
+              value="Jazz"
+            />
+          </label>
+
+          <label class="form-check-label m-2">Pop
+            <input
+              class="form-check-input m-2"
+              type="radio"
+              name="style"
+              value="Pop"
+            />
+          </label>
+
+          <label class="form-check-label m-2">
+            Blues
+            <input
+              class="form-check-input m-2"
+              type="radio"
+              name="style"
+              value="Blues"
+            />
+          </label>
+        </div>
+
+        <label class="mb-2 mt-2">Description:
+          <input type="text" class="form-control" name="description" />
+        </label>
+
+        <label class="mb-2 mt-2">Location:
+          <input
+            type="text"
+            class="form-control"
+            name="locationName"
+            required
+          />
+        </label>
+
+        <label class="mb-2 mt-2">Address:
+          <input type="text" class="form-control" name="address" required />
+        </label>
+
+        <label class="mb-2 mt-2">Date and Time of the Event:
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="startTime"
+            required
+          />
+        </label>
+
+        <label class="mb-2 mt-2">Add an image:
+          <input type="file" class="form-control-file" name="imageUrl" />
+        </label>
+
+        <button class="btn btn-dark login-btn" type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-6">
+    <div class="card details-card">
+      <img src="../images/singer.jpeg" alt="singer" />
+    </div>
+  </div>
+  </div>
+
 </div>
-<form action="/events-create" method="post" class="row w-50" enctype="multipart/form-data">
-  
-
-  <label class="mb-2 mt-2">Title:
-    <input type="text" class="form-control mb-2 mt-2" name="title" required />
-  </label>
-
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Rock"
-    />
-    <label class="form-check-label m-2">
-      Rock
-    </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Jazz"
-    />
-    <label class="form-check-label m-2">
-      Jazz
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input m-2" type="radio" name="style" value="Pop" />
-    <label class="form-check-label m-2">
-      Pop
-    </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Blues"
-    />
-    <label class="form-check-label m-2">
-      Blues
-    </label>
-  </div>
-  <label class="mb-2 mt-2">Description:
-    <input type="text" class="form-control" name="description" />
-  </label>
-  <label class="mb-2 mt-2">Location:
-    <input type="text" class="form-control" name="locationName" required />
-  </label>
-  <label class="mb-2 mt-2">Address:
-    <input type="text" class="form-control" name="address" required />
-  </label>
-  <label class="mb-2 mt-2">Add an image:
-  <input type="file" class="form-control-file" name="imageUrl" />
-</label>
-  <label class="mb-2 mt-2">Date and Time of the Event:
-    <input type="datetime-local" name="startTime" required />
-  </label>
-  <button class="btn btn-danger" type="submit">Submit</button>
-
-</form>

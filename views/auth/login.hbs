@@ -1,17 +1,33 @@
-<h2>Log In Form</h2>
+<div class="container text-center">
+  <h2 class="my-3">Log In</h2>
+  <p class="light-font">Welcome back! 🤟</p>
+<div class="row mb-5 mt-3">
+   <div class="col-12 col-md-6">
+  <div class="card details-card buttons-style p-4">
 
-<form action="/auth/login" method="POST">
+    <form action="/auth/login" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" required />
+        <div id="emailHelp" class="form-text">We'll never share your email with
+          anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required />
+      </div>
+        <button type="submit" class="btn btn-dark login-btn">Submit</button>
+    </form>
 
-   <label> Email
-      <input type="email" name="email" required>
-   </label>
-   <label> Password
-      <input type="password" name="password" required>
-   </label>
-
-   <button type="submit">Submit</button>
-</form>
-
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </div>
+  </div>
+  <div class="col-12 col-md-6">
+   <div class="card details-card">
+      <img src="../images/retro-radio.png" alt="radio">
+   </div>
+  </div>
+  </div>
+</div>
