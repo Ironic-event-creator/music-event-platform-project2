@@ -1,15 +1,33 @@
- <h2>Sign Up Form</h2>
- <form action="/auth/signup" method="POST">
-   <label> Email
-      <input type="email" name="email" required>
-   </label>
-   <label> Password
-      <input type="password" name="password" required>
-   </label>
+<div class="container text-center">
+  <h2>Sign Up</h2>
+  <p class="light-font">Be part of our community 🤟</p>
+<div class="row mb-5 mt-3">
+   <div class="col col-md-6">
+  <div class="card details-card buttons-style p-3">
 
-   <button type="submit">Submit</button>
-</form>
+    <form action="/auth/signup" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" required />
+        <div id="emailHelp" class="form-text">We'll never share your email with
+          anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required />
+      </div>
+        <button type="submit" class="btn btn-dark login-btn">Submit</button>
+    </form>
 
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </div>
+  </div>
+  <div class="col col-md-6">
+   <div class="card details-card p-5">
+      <img src="../images/radio-icon.png" alt="radio">
+   </div>
+  </div>
+  </div>
+</div>
