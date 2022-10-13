@@ -26,6 +26,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/events-create">Create an Event</a>
             </li>
+            {{#if userInSession}}
+            <li class="nav-item">
+              <a class="nav-link" href="/user-events">My Events</a>
+            </li>
+            {{/if}}
           </ul>
           {{!-- Login-Logout-Register --}}
           {{#if userInSession}}
