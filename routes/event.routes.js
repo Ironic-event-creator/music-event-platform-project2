@@ -120,8 +120,10 @@ router.get("/events/:eventId", (req, res, next) => {
 // Process form to post comments
 router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
-  const newComment = req.body.comments;
-
+  const newComment = {
+    comment: req.body.comment,
+    commentOwner: req.body.commentOwner,
+  };
   Event.findByIdAndUpdate(
     eventId,
     { $push: { comments: newComment } },
