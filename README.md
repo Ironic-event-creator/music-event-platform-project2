@@ -44,9 +44,24 @@
         [x] - comments from every user -> isLoggedIn
         [x] - store user Id in the Event model
         [x] - style filter
-        [ ] - Map
-        [ ] - Date
+        [x] - Date
 
+
+To-do:
+- improve design/css
+- event details responsive
+- event details image: don't force size (max-width instead of width)
+
+
+Improvements:
+- page "my events" (if list still empty: display short text + button)
+
+- ux: hover effect on cards
+  - https://codepen.io/grantcoombs/pen/zmQRpb
+  - https://codepen.io/search/pens?q=card+hover
+- improve homepage (ex. add a nice image + short description)
+- comments: separate + display author name + time ?
+- "all events": functionality to filter
 
 <!-- Todo List:
 Fix the time in event detail page -->

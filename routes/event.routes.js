@@ -12,7 +12,7 @@ const hbs = require("hbs");
 
 hbs.registerHelper("dateFormat", require("handlebars-dateformat"));
 
-//2nd Page - Display all events
+//Display all events
 router.get("/events", (req, res, next) => {
   Event.find()
     .then((eventsFromDb) => {
@@ -36,12 +36,12 @@ router.get("/user-events", (req, res, next) => {
     });
 });
 
-//4th Page - Display form to create
+//Display form to create
 router.get("/events-create", isLoggedIn, (req, res, next) => {
   res.render("events/create-event");
 });
 
-//4th Page - Process form to create
+//Process form to create
 router.post(
   "/events-create",
   isLoggedIn,
@@ -89,7 +89,7 @@ router.get("/:eventStyle", (req, res, next) => {
     });
 });
 
-//5th Page - Display form to edit
+//Display form to edit
 router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
@@ -101,7 +101,7 @@ router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
     });
 });
 
-//3rd Page - Display details of an event
+//Display details of an event
 router.get("/events/:eventId", (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
@@ -117,7 +117,7 @@ router.get("/events/:eventId", (req, res, next) => {
       next();
     });
 });
-// process form to post comments
+// Process form to post comments
 router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
   const newComment = req.body.comments;
@@ -128,7 +128,6 @@ router.post("/events/:eventId/comment", isLoggedIn, (req, res, next) => {
     { returnDocument: "after" }
   )
     .then((event) => {
-      console.log(event);
       res.render("events/event-details", { eventDetails: event });
     })
     .catch((err) => {
