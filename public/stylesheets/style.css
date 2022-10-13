@@ -36,6 +36,18 @@ h1 {
  .light-font {
   color: #f7f2ef
  }
+ .list-card {
+   background-color: #e9ecef;
+   border: 1px solid rgba(255, 0, 0, 0.3)
+ }
+ .list-card:hover {
+  box-shadow: 0 20px 60px 0 rgba(255, 0, 0, 0.8);
+  -webkit-transform: translate(0,-10px);
+  transform: translate(0,-10px);
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
 .footer img {
   width: 40px;
   display: inline;

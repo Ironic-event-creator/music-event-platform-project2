@@ -6,8 +6,8 @@
 
 <div id="event-list" class="row">
     {{#each events}}
-    <section class="event col-12 col-md-4 mb-2">
-        <div class="card">
+    <section class="event col-12 col-md-6 col-lg-4 mb-2">
+        <div class="card p-2 m-3 list-card card-shadow">
             {{#if imageUrl}}
             <img src="{{imageUrl}}" class="card-img-top rounded-pill" alt="{{title}}">
             {{else}}
@@ -22,7 +22,7 @@
                 <p class="card-text">{{style}}</p>
                 <p class="card-text">{{location.locationName}}</p>
                 <p class="card-text">{{dateFormat startTime "MMMM Do YYYY, h:mm a"}}</p>
-                <a class="btn btn-secondary btn-sm" href="events/{{_id}}">See Details</a>
+                <a class="btn btn-dark login-btn" href="events/{{_id}}">Details</a>
             </div>
         </div>
     </section>
