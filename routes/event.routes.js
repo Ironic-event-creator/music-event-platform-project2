@@ -115,7 +115,7 @@ router.get("/events/:eventId", (req, res, next) => {
     });
 });
 // Process form to post comments
-router.post("/events/:eventId", (req, res, next) => {
+router.post("/events/:eventId", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
   const newComment = req.body.commentOwner + " commented: " + req.body.comment;
 
