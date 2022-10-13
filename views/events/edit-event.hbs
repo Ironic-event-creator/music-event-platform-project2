@@ -1,92 +1,119 @@
-<div class="row text-center mt-2 mb-2 w-50">
-  <h3>Update an event</h3>
+<div class="container text-center">
+  <h2 class="mt-4">Update your event</h2>
+  <p class="light-font"></p>
+  <div class="row mt-4 mb-4">
+    <div class="col-12 col-lg-6">
+      <div class="card details-card">
+        <form action="/edit/{{_id}}" method="post">
+
+          <label class="mb-2 mt-2">Title:
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              value="{{title}}"
+              required
+            />
+          </label>
+
+          <div class="form-check">
+            <label class="form-check-label m-2">Rock
+              <input
+                class="form-check-input m-2"
+                type="radio"
+                name="style"
+                value="Rock"
+              />
+            </label>
+
+            <label class="form-check-label m-2">Jazz
+              <input
+                class="form-check-input m-2"
+                type="radio"
+                name="style"
+                value="Jazz"
+              />
+            </label>
+
+            <label class="form-check-label m-2">Pop
+              <input
+                class="form-check-input m-2"
+                type="radio"
+                name="style"
+                value="Pop"
+              />
+            </label>
+
+            <label class="form-check-label m-2">Blues
+              <input
+                class="form-check-input m-2"
+                type="radio"
+                name="style"
+                value="Blues"
+              />
+            </label>
+          </div>
+
+          <label class="mb-2 mt-2">Description:
+            <input
+              type="text"
+              class="form-control"
+              value="{{description}}"
+              name="description"
+            />
+          </label>
+
+          <label class="mb-2 mt-2">Location:
+            <input
+              type="text"
+              class="form-control"
+              value="{{location.locationName}}"
+              name="locationName"
+              required
+            />
+          </label>
+
+          <label class="mb-2 mt-2">Address:
+            <input
+              type="text"
+              class="form-control"
+              value="{{location.address}}"
+              name="address"
+              required
+            />
+          </label>
+
+          <label class="mb-2 mt-2">Date and Time of the Event:
+            <input
+              type="datetime-local"
+              name="startTime"
+              value="{{startTime}}"
+              required
+            />
+          </label>
+
+          <button class="btn btn-dark login-btn" type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="card details-card mt-4 mt-lg-0">
+        {{#if imageUrl}}
+          <img
+            src="{{imageUrl}}"
+            class="card-img-top rounded"
+            alt="{{title}}"
+          />
+        {{else}}
+          <img
+            src="../images/defaultImg.jpeg"
+            class="card-img-top rounded"
+            alt="default image band"
+          />
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
 </div>
-<form action="/events/{{_id}}/edit" method="post" class="row w-50">
-  {{!-- <input type="text" class="form-control mb-2 mt-2" name="title" value={{title}} required> --}}
-
-  <label class="mb-2 mt-2">Title:
-    <input
-      type="text"
-      class="form-control mb-2 mt-2"
-      name="title"
-      value="{{title}}"
-      required
-    />
-  </label>
-
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Rock"
-    />
-    <label class="form-check-label m-2">
-      Rock
-    </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Jazz"
-    />
-    <label class="form-check-label m-2">
-      Jazz
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input m-2" type="radio" name="style" value="Pop" />
-    <label class="form-check-label m-2">
-      Pop
-    </label>
-  </div>
-  <div class="form-check">
-    <input
-      class="form-check-input m-2"
-      type="radio"
-      name="style"
-      value="Blues"
-    />
-    <label class="form-check-label m-2">
-      Blues
-    </label>
-  </div>
-  <label class="mb-2 mt-2">Description:
-    <input
-      type="text"
-      class="form-control"
-      value="{{description}}"
-      name="description"
-    />
-  </label>
-  <label class="mb-2 mt-2">Location:
-    <input
-      type="text"
-      class="form-control"
-      value="{{location.locationName}}"
-      name="locationName"
-      required
-    />
-  </label>
-  <label class="mb-2 mt-2">Address:
-    <input
-      type="text"
-      class="form-control"
-      value="{{location.address}}"
-      name="address"
-      required
-    />
-  </label>
-  <label class="mb-2 mt-2">Date and Time of the Event:
-    <input
-      type="datetime-local"
-      name="startTime"
-      value="{{startTime}}"
-      required
-    />
-  </label>
-  <button class="btn btn-danger" type="submit">Update</button>
-
-</form>

@@ -42,10 +42,7 @@ router.get("/events-create", isLoggedIn, (req, res, next) => {
 });
 
 //Process form to create
-router.post(
-  "/events-create",
-  isLoggedIn,
-  fileUploader.single("imageUrl"),
+router.post("/events-create", isLoggedIn, fileUploader.single("imageUrl"),
   (req, res, next) => {
     const newImage = req.file.path;
     const eventDetails = {
@@ -90,7 +87,7 @@ router.get("/:eventStyle", (req, res, next) => {
 });
 
 //Display form to edit
-router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
+router.get("/edit/:eventId", isLoggedIn, (req, res, next) => {
   Event.findById(req.params.eventId)
     .then((eventDetails) => {
       res.render("events/edit-event", eventDetails);
@@ -145,7 +142,7 @@ router.post("/events/:eventId", (req, res, next) => {
 });
 
 //Process form to edit
-router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
+router.post("/edit/:eventId", isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
 
   const newDetails = {
