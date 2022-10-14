@@ -1,82 +1,50 @@
-<!-- # Milestone 1:
+# Music Event Platform 
+<br>
+An Express application that display information about live music events in Istanbul.
+A registered user can create, update and delete. Or simply leave a comment for the events already posted.
+<br>
 
-## Files structurs:
+***
 
-    [x] set PORT
-    [x] configurations understanding: db, config, bin (together)
-    [x] create seeds file
+## How to run this app in your environment.
+<br>
+The images uplouded are stored in Cloudinary, you might need to create an account (for free!). 
+<br>
 
-    [x] Models:
-        - [x] Event model
-        - [x] User model
+***
 
-    [x] Routes:
-       [x] event.routes.js
-       [x] connections required (model file, mongoose...)
-       [x] 2nd page: router.get("/events") -> display events
-       [x] 3rd page: router.get("/events/:eventId") -> display event details
-       [x] 3rd page: router.post("events/:eventId/delete") -> delete event and redirect
-       [x] 4th page: router.get("/events/create") -> display form
-       [x] 4th page: router.post("/events/create") -> process form
-       [x] 5th page: router.get("/events/:eventId/edit") -> display form
-       [x] 5th page: router.post("/events/:eventId/edit") -> process form
+## Create .env file to store your variables
+ 
+>PORT
 
+>SESSION_SECRET
 
-    [x] Views:
-       [x] Events views folder
-        [x]-Home: All event list page
-        [x]-Categories: Events depending on category page
-        [x]-Event details: Details page
-        [x]-Creating event: Creating form page CR
-        [x]-Updating event: Updating form page CRUD
+>CLOUDINARY_NAME 
 
-        [x] - link pages
-        [x] - add bootstrap
+>CLOUDINARY_KEY 
 
-    [x] User:
-        [x] - connect route user in app.js
-        [x] - SignUp route
-        [x] - SignUp form
-        [x] - LogIn route
-        [x] - LogIn form
-        [x] - Authorization middleware functions C+U+D /don't display button delete or update
-        [x] - only owner can U+D
-        [x] - comments from every user -> isLoggedIn
-        [x] - store user Id in the Event model
-        [x] - style filter
-        [x] - Date
+>CLOUDINARY_SECRET 
 
+### In order to install all dependencies, and then run the application, type the following commands in your console:
+<br>
 
-To-do:
-- improve design/css
-- event details responsive
-- event details image: don't force size (max-width instead of width)
+> npm install
+
+> npm run dev
+br
+***
+## Take a look on our work!
+<br>
+
+[Music even Platform](https://music-event-platform.herokuapp.com/)
+
+<br>
+
+Hope you'll like it!
+
+Thanks ❤️
+
+Alessandra & Berkay
 
 
-Improvements:
-- page "my events" (if list still empty: display short text + button)
 
-- ux: hover effect on cards
-  - https://codepen.io/grantcoombs/pen/zmQRpb
-  - https://codepen.io/search/pens?q=card+hover
-- improve homepage (ex. add a nice image + short description)
-- comments: separate + display author name + time ?
-- "all events": functionality to filter
-
-<!-- Todo List:
-Fix the time in event detail page -->
-
-<!-- Suggestions:
-x startTime - type; Date
-  x only one field (inc. date + time of the day)
-  [x] UI: type="datetime-local
-  - UI: to display the date, use native js functions
-x rename comments (plural)
-MVP simplifications:
-- calendar view > just displaying all events one after the other
-x location > just storing a string
-- comments > bonus
-Bonus:
-
-- responsive
-- store location as geo-json & display maps -->
