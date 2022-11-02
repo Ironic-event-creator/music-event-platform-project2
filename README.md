@@ -41,7 +41,7 @@ The images uplouded are stored in Cloudinary, you might need to create an accoun
 
 <br>
 
-[Music event Platform](https://music-event-platform.adaptable.app/)
+[Music Event Platform](https://music-event-platform.adaptable.app/)
 
 <br>
 
